@@ -1,17 +1,13 @@
 import { validateLoginForm } from "../../utils/validate";
 import Header from "../Header"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../utils/firebase";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/userSlice";
+import { AVATAR_GENERATE_URL } from "../../utils/constants";
 
 const Login = () => {
-
-const navigate  = useNavigate()
-// check already login
-const user = useSelector(store => store.user)
 
 const dispatch  = useDispatch()
 
@@ -24,13 +20,6 @@ const [passwordError, setPasswordError] = useState(true)
 const name = useRef(null);
 const email = useRef(null);
 const password = useRef(null);
-
-useEffect( () => {
-    if(user && user?.uid){
-        navigate('/browse')
-        return;
-    }
-}, [user])
 
 const handleSignIn = () => {
     setIsSignIn(!isSignIn)
@@ -58,13 +47,11 @@ const handleFormBtn = () => {
             
 
             updateProfile(user, {
-                displayName: nameVal, photoURL: "https://ui-avatars.com/api/?name="+nameVal
+                displayName: nameVal, photoURL: AVATAR_GENERATE_URL+nameVal
               }).then(() => {
 
                 const {uid, email, displayName, photoURL, phoneNumber} = auth.currentUser;
                 dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoUrl: photoURL, phoneNumber: phoneNumber}))
-
-                navigate('/browse')
               }).catch((error) => {
                 console.log("profile update error:", error)
               });
@@ -81,7 +68,6 @@ const handleFormBtn = () => {
             // Signed in 
             const user = userCredential.user;
            console.log("user", user)
-           navigate('/browse')
         })
         .catch((error) => {
             const errorCode = error.code;

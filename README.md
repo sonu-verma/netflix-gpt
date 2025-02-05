@@ -13,6 +13,9 @@
     - install redux toolkit (npm i -D @reduxjs/toolkit && npm i react-redux)
         - create appStore 
         - create userSlice
+- Sign in / Sign Out Flow
+- Update Profile
+- Unsubscribed to the onAuthStateChanged callback
 - Fetch from TMDB movie
 
 # Firebase Authentication

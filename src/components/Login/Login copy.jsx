@@ -1,42 +1,22 @@
 import { validateLoginForm } from "../../utils/validate";
 import Header from "../Header"
-import { useEffect, useRef, useState } from "react"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../utils/firebase";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../../utils/userSlice";
+import { useRef, useState } from "react"
 
 const Login = () => {
-
-const navigate  = useNavigate()
-// check already login
-const user = useSelector(store => store.user)
-
-const dispatch  = useDispatch()
 
 const [isSignIn, setIsSignIn] = useState(true)
 const [nameError, setNameError] = useState(true)
 const [emailError, setEmailError] = useState(true)
 const [passwordError, setPasswordError] = useState(true)
-
-
 const name = useRef(null);
 const email = useRef(null);
 const password = useRef(null);
 
-useEffect( () => {
-    if(user && user?.uid){
-        navigate('/browse')
-        return;
-    }
-}, [user])
-
 const handleSignIn = () => {
     setIsSignIn(!isSignIn)
-    setEmailError(false) 
-    setPasswordError(false) 
-    setNameError(false) 
+    setEmailError(true) 
+    setPasswordError(true) 
+    setNameError(true) 
 } 
 
 const handleFormBtn = () => {
@@ -48,49 +28,6 @@ const handleFormBtn = () => {
     setPasswordError(validate?.password) 
     !isSignIn ? setNameError(validate?.name) : false
     console.log(validate)
-    if(!isSignIn){
-    // Sign UP Logic
-        createUserWithEmailAndPassword(auth, emailVal, passwordVal)
-        .then((userCredential) => {
-            // Signed up 
-            const user = userCredential.user;
-            console.log("user", user)
-            
-
-            updateProfile(user, {
-                displayName: nameVal, photoURL: "https://ui-avatars.com/api/?name="+nameVal
-              }).then(() => {
-
-                const {uid, email, displayName, photoURL, phoneNumber} = auth.currentUser;
-                dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoUrl: photoURL, phoneNumber: phoneNumber}))
-
-                navigate('/browse')
-              }).catch((error) => {
-                console.log("profile update error:", error)
-              });
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log("errorMessage", errorMessage+"-->"+errorCode)
-        });
-    }else{
-        // Sign In Logic 
-        signInWithEmailAndPassword(auth, emailVal, passwordVal)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-           console.log("user", user)
-           navigate('/browse')
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message; 
-            setEmailError(false)
-            setPasswordError(false)
-            console.log("errorMessage", errorMessage+"-->"+errorCode)
-        });
-    }
 }
 
 

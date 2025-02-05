@@ -16,7 +16,11 @@
 - Sign in / Sign Out Flow
 - Update Profile
 - Unsubscribed to the onAuthStateChanged callback
-- Fetch from TMDB movie
+- use constance for hardcoded values
+- register TMDB api and create and app and get access token
+- get data from tmdb now playing movies list api 
+- create movieSlice and update store with moview data
+- customer hook for now playing and trailer
 
 # Firebase Authentication
     - Firebase account creation

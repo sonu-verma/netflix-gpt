@@ -12,7 +12,7 @@ const Header = () => {
     const navigate = useNavigate()
     const [showProfilePop, setShowProfilePop] = useState(false)
 
-    console.log("header user", user)
+    // console.log("header user", user)
 
     const handleSignOut =  () => {
         signOut(auth).then(() => {
@@ -40,18 +40,18 @@ const Header = () => {
 
 
     return <>
-            <div className="absolute w-screen bg-gradient-to-b from-black px-20 py-2 z-30 flex justify-between">
+            <div className="absolute w-screen bg-gradient-to-b from-black px-8 z-30 flex justify-between">
                 <img 
-                    className="w-44"
+                    className="w-25 h-10 mt-1.5 mx-5"
                     src= { LOGO }
                     alt="Netflix Logo"
                 />
                 {
                     (user && user?.uid) && (
-                        <div>
+                        <div className="mr-5">
                             <img 
                                 onClick={ () => setShowProfilePop(!showProfilePop) }
-                                className="h-10 w-10 mt-4 mx-2"
+                                className="h-8 w-8 mt-4 mx-2  rounded-sm"
                                 src={user.displayName ? user.photoUrl: USER_AVATAR}
                                 // src=""
                             />
@@ -65,7 +65,7 @@ const Header = () => {
             {
                 showProfilePop &&
                 
-                <div className="bg-black text-white p-4 w-50 absolute right-15 top-20">
+                <div className="bg-gray-900 text-white p-4 w-50 absolute right-10 top-15">
                     <div>
                         <p>Manage Profile</p>
                         <p>Transfer Profile</p>

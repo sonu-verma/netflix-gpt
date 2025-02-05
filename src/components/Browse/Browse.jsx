@@ -1,25 +1,25 @@
-import { useEffect } from "react"
-import { TMDB_API_OPTION, TMDB_PLAYING_NOW_MOVIE_URL } from "../../utils/constants"
 import Header from "../Header"
-import { useDispatch } from "react-redux"
-import { addNowPlayingMovies } from "../../utils/moviesSlice"
-
+import useNowPlayingMovies from "./hooks/useNowPlayingMovies";
+import MovieRecommendedContainer from "./MovieRecommendedContainer";
+import MovieVideoContainer from "./movieVideoContainer/MovieVideoContainer";
 const Browse = () => {
 
-    const dispatch = useDispatch();
-
-    const getNowPlayingMovies = async () => {
-        const data = await fetch(TMDB_PLAYING_NOW_MOVIE_URL, TMDB_API_OPTION)
-        const json = await data.json()
-        dispatch(addNowPlayingMovies(json.results))
-        console.log(json)
-    }
-
-    useEffect( () => {
-        getNowPlayingMovies()
-    }, [])
+    useNowPlayingMovies()    
+  
     return <>
         <Header />
+        {
+            /*
+                VideContainer
+                    Video Container
+                    Video Title
+                MovieRecommandedContainer
+                    MovieList * N
+                    cards * N
+            */
+        }
+        <MovieVideoContainer />
+        <MovieRecommendedContainer />
     </>
 }
 

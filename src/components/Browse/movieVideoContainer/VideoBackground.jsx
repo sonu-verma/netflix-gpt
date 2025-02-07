@@ -7,13 +7,12 @@ const VideoBackground = ({poster_path, movieID}) => {
     
     useTrailerVideo(movieID)
     
-    console.log("trailer", trailer)
     return (
         <div className="bg-red-300">
             {
-                !trailer ? <img  className=" w-screen h-screen" src={`https://image.tmdb.org/t/p/w3840_and_h2160_bestv2/${poster_path}.jpg`} /> :
+                !trailer ? <img  className="w-full h-screen" src={`https://image.tmdb.org/t/p/w3840_and_h2160_bestv2/${poster_path}.jpg`} /> :
                 <iframe 
-                    className="h-screen w-screen"
+                    className="w-full h-screen"
                     src={`https://www.youtube.com/embed/${trailer.key}?si=${trailer.key}&start=1&autoplay=1&mute=1` }
                     title="YouTube video player" 
                     frameBorder="0" 

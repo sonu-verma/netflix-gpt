@@ -1,10 +1,14 @@
 import Header from "../Header"
 import useNowPlayingMovies from "./hooks/useNowPlayingMovies";
-import MovieRecommendedContainer from "./MovieRecommendedContainer";
+import usePopularMovie from "./hooks/usePopularMovie";
+import useTopRatedMovies from "./hooks/useTopRatedMovies";
+import MovieRecommendedContainer from "./movieRecommendedContainer/MovieRecommendedContainer";
 import MovieVideoContainer from "./movieVideoContainer/MovieVideoContainer";
 const Browse = () => {
 
-    useNowPlayingMovies()    
+    useNowPlayingMovies()
+    usePopularMovie()    
+    useTopRatedMovies()
   
     return <>
         <Header />

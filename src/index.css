@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+/* Custom Scrollbar */
+@layer utilities {
+    /* Hide scrollbar for non-webkit browsers */
+    .scrollbar-hide {
+      -ms-overflow-style: none;  /* IE & Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  
+    /* Customize Scrollbar */
+    .scrollbar-custom::-webkit-scrollbar {
+      width: 2px; /* Set scrollbar width */
+      height: 2px;
+    }
+  
+    .scrollbar-custom::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Track color */
+      border-radius: 10px;
+    }
+  
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+      background: rgb(206, 152, 152); /* Thumb color */
+      border-radius: 10px;
+    }
+  
+    .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+      background: red; /* Thumb color on hover */
+    }
+  }

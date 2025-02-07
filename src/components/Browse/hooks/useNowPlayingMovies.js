@@ -10,7 +10,7 @@ const useNowPlayingMovies = () => {
         const data = await fetch(TMDB_PLAYING_NOW_MOVIE_URL, TMDB_API_OPTION)
         const json = await data.json()
         dispatch(addNowPlayingMovies(json.results))
-        console.log(json)
+        console.log("Now Playing Movies",json)
     }
 
     useEffect( () => {

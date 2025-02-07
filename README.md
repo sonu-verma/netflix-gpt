@@ -21,7 +21,9 @@
 - get data from tmdb now playing movies list api 
 - create movieSlice and update store with moview data
 - customer hook for now playing and trailer
--
+- Add GPT Search Functionality
+    - GPT Search Bar
+    - GPT Recommended Movies
 
 # Firebase Authentication
     - Firebase account creation

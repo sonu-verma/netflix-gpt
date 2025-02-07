@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from "../../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/userSlice";
-import { AVATAR_GENERATE_URL } from "../../utils/constants";
+import { AVATAR_GENERATE_URL, BG_IMG } from "../../utils/constants";
 
 const Login = () => {
 
@@ -86,7 +86,7 @@ return (
         <Header />
         <div className="absolute opacity-100">
             <img 
-                src="https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_large.jpg" 
+                src={BG_IMG}
                 alt="Netflix background"
                 className="h-screen w-screen object-fill"
             />

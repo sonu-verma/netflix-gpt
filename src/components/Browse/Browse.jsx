@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import GptSearch from "../Gpt/GptSearch";
 import Header from "../Header"
 import useNowPlayingMovies from "./hooks/useNowPlayingMovies";
 import usePopularMovie from "./hooks/usePopularMovie";
@@ -10,20 +12,18 @@ const Browse = () => {
     usePopularMovie()    
     useTopRatedMovies()
   
+    const gptFlag = useSelector(gpt => gpt.config?.gpt)
     return <>
         <Header />
         {
-            /*
-                VideContainer
-                    Video Container
-                    Video Title
-                MovieRecommandedContainer
-                    MovieList * N
-                    cards * N
-            */
+            gptFlag ? 
+            <GptSearch /> : 
+            <>
+                <MovieVideoContainer />
+                <MovieRecommendedContainer />
+            </>
+
         }
-        <MovieVideoContainer />
-        <MovieRecommendedContainer />
     </>
 }
 

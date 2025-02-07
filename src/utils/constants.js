@@ -7,6 +7,8 @@ export const AVATAR_GENERATE_URL = "https://ui-avatars.com/api/?name=";
 
 export const TMDB_PLAYING_NOW_MOVIE_URL = "https://api.themoviedb.org/3/movie/now_playing?page=1"
 
+export const BG_IMG = "https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_large.jpg"
+
 export const TMDB_API_OPTION = {
     method: 'GET',
     headers: {
@@ -14,3 +16,10 @@ export const TMDB_API_OPTION = {
       Authorization: 'Bearer '+import.meta.env.VITE_TMDB_ACCESS_TOKEN
     }
   };
+
+
+  export const langOptions = [
+    {lang: "en", title: "English"},
+    {lang: "hindi", title: "Hindi"},
+    {lang: "marathi", title: "Marathi"}
+  ];

@@ -5,7 +5,7 @@ import GptSearchBar from "./GptSearchBar"
 const GptSearch = () => {
   return (
     <div>
-        <div className="absolute opacity-100 -z-20">
+        <div className="fixed opacity-100 -z-20">
             <img 
                 src={BG_IMG} 
                 alt="Netflix background"

@@ -24,6 +24,7 @@
 - Add GPT Search Functionality
     - GPT Search Bar
     - GPT Recommended Movies
+    - multi language option
 
 # Firebase Authentication
     - Firebase account creation

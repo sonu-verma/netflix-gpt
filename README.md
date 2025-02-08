@@ -25,6 +25,7 @@
     - GPT Search Bar
     - GPT Recommended Movies
     - multi language option
+- Memorization
 
 # Firebase Authentication
     - Firebase account creation
